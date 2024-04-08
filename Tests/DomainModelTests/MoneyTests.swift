@@ -80,6 +80,16 @@ class MoneyTests: XCTestCase {
     XCTAssert(total.amount == 10)
     XCTAssert(total.currency == "GBP")
   }
+    
+    func testNegativeValuesInMoney() {
+        let negativeMoney = Money(amount: -100, currency: "USD")
+        XCTAssert(negativeMoney.amount < 0)
+    }
+
+    func testIllegalCurrencyTypes() {
+        let unknownCurrencyMoney = Money(amount: 100, currency: "XYZ")
+        XCTAssert(unknownCurrencyMoney.currency != "USD") // Should fail if "XYZ" is not allowed
+    }
 
     static var allTests = [
         ("testCanICreateMoney", testCanICreateMoney),

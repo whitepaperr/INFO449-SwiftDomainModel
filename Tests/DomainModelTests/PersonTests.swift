@@ -27,6 +27,17 @@ class PersonTests: XCTestCase {
         mike.spouse = Person(firstName: "Bambi", lastName: "Jones", age: 42)
         XCTAssert(mike.spouse != nil)
     }
+    
+    func testSingleNamePersons() {
+        let beyonce = Person(firstName: "Beyonce", age: 39)
+        XCTAssert(beyonce.toString().contains("Beyonce"))
+        
+        let bono = Person(lastName: "Bono", age: 60)
+        XCTAssert(bono.toString().contains("Bono"))
+        
+        let cher = Person(firstName: "Cher", age: 74)
+        XCTAssert(cher.toString().contains("Cher"))
+    }
 
     static var allTests = [
         ("testPerson", testPerson),

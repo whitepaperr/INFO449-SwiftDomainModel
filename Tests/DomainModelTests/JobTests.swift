@@ -37,6 +37,17 @@ class JobTests: XCTestCase {
         job.raise(byPercent: 1.0) // Nice raise, bruh
         XCTAssert(job.calculateIncome(10) == 320)
     }
+    
+    func testNegativeValuesInJobSalary() {
+        let negativeSalaryJob = Job(title: "Intern", type: .Salary(-1000))
+        XCTAssert(negativeSalaryJob.calculateIncome() < 0)
+    }
+
+    func testNegativeValuesInJobHourlyRate() {
+        let negativeHourlyJob = Job(title: "Night Guard", type: .Hourly(-10.0))
+        XCTAssert(negativeHourlyJob.calculateIncome(10) < 0)
+    }
+
   
     static var allTests = [
         ("testCreateSalaryJob", testCreateSalaryJob),
